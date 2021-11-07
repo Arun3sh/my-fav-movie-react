@@ -1,38 +1,84 @@
+body {
+	font-family: 'popins', sans-serif;
+}
+img {
+	height: 350px;
+}
+.fav-movies {
+	margin: 20px;
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.movie {
+	width: 32%;
+}
+.heading {
+	display: flex;
+	justify-content: space-around;
+}
+.myForm {
+	margin: 25px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.MuiFormControl-root {
+	margin-bottom: 20px !important;
+}
+.MuiFormControl-root fieldset {
+	width: 250px;
+}
+#outlined-basic {
+	width: 250px;
+}
+#description {
+	margin: 20px;
+}
+/*  .myForm label {
+	margin: 20px;
+} 
+.myForm input[type='text'],
+.myForm input[type='link'] {
+	margin: 15px 20px 15px 20px;
+} */
+
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+	height: 40vmin;
+	pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
