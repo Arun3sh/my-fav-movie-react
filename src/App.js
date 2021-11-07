@@ -100,11 +100,11 @@ function App() {
 					</Button>
 				</form>
 			</div>
-			<div className="fav-movies">
+			<section className="fav-movies">
 				{movies.map(({ name, poster, summary, rating }) => (
 					<ShowMovie name={name} poster={poster} summary={summary} rating={rating} />
 				))}
-			</div>
+			</section>
 		</div>
 	);
 }

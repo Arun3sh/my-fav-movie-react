@@ -3,16 +3,17 @@ body {
 }
 img {
 	height: 350px;
+	width: 235px;
 }
 .fav-movies {
 	margin: 20px;
 	display: flex;
 	gap: 10px;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-evenly;
 }
 .movie {
-	width: 32%;
+	width: 350px;
 }
 .heading {
 	display: flex;

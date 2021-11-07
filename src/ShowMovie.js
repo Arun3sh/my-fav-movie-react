@@ -6,7 +6,7 @@ export function ShowMovie({ name, poster, summary, rating }) {
 	const [show, setShow] = useState(true);
 	const styles = { display: show ? 'block' : 'none' };
 	return (
-		<section className="movie">
+		<div className="movie">
 			<div className="imageContainer">
 				<img className="poster" src={poster} alt={name} />
 			</div>
@@ -28,6 +28,6 @@ export function ShowMovie({ name, poster, summary, rating }) {
 
 				<Counter />
 			</div>
-		</section>
+		</div>
 	);
 }
