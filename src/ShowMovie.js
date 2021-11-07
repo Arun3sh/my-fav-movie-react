@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Counter } from './Counter';
-import { Button } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import ExpandLess from '@mui/icons-material/ExpandLess';
 
 export function ShowMovie({ name, poster, summary, rating }) {
 	const [show, setShow] = useState(true);
@@ -12,19 +14,17 @@ export function ShowMovie({ name, poster, summary, rating }) {
 			</div>
 			<div className="otherContainer">
 				<div className="heading">
-					<h2>{name}</h2>
-					<h2 className="rating">⭐{rating}/10</h2>
+					<h2>
+						{name}
+						<IconButton aria-label="fingerprint" color="primary" onClick={() => setShow(!show)}>
+							{!show ? <ExpandMore /> : <ExpandLess />}
+						</IconButton>
+					</h2>
+
+					<h2 className="rating">⭐{rating}</h2>
 				</div>
 
 				<p style={styles}>{summary}</p>
-				<Button
-					id="description"
-					variant="outlined"
-					onClick={() => setShow(!show)}
-					// style={{ outline: 'none', border: 'none' }}
-				>
-					{!show ? '✔' : '❌'} Description
-				</Button>
 
 				<Counter />
 			</div>

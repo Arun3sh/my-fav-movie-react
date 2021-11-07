@@ -5,6 +5,9 @@ import './App.css';
 import { ShowMovie } from './ShowMovie';
 import { TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import { Switch, Route, Link } from 'react-router-dom';
+
+// import { RouterLink } from './Routerlink';
 
 function App() {
 	const [movies, setMovies] = useState([
@@ -56,55 +59,78 @@ function App() {
 	};
 	return (
 		<div className="App">
-			<h1>My Favorite Movies</h1>
-			<div className="addMovie">
-				<form className="myForm" noValidate autoComplete="off">
-					<TextField
-						id="outlined-basic"
-						label="Movie Title"
-						variant="outlined"
-						type="text"
-						value={name}
-						onChange={(e) => setName(e.target.value)}
-					/>
+			{/* <RouterLink /> */}
+			<ul>
+				<li>
+					<Link to="/">Home</Link>
+				</li>
+				<li>
+					<Link to="/about">About</Link>
+				</li>
+				<li>
+					<Link to="/favmovies">Movielist</Link>
+				</li>
+			</ul>
 
-					<TextField
-						id="outlined-basic"
-						label="Poster link"
-						variant="outlined"
-						type="link"
-						value={poster}
-						onChange={(e) => setPoster(e.target.value)}
-					/>
+			<hr />
 
-					<TextField
-						id="outlined-basic"
-						label="Movie Summary"
-						variant="outlined"
-						type="text"
-						value={summary}
-						onChange={(e) => setSummary(e.target.value)}
-					/>
+			<Switch>
+				<Route exact path="/">
+					Home
+				</Route>
+				<Route path="/about">This is where you can find my fav movies!</Route>
+				<Route path="/favmovies">
+					<h1>My Favorite Movies</h1>
+					<div className="addMovie">
+						<form className="myForm" noValidate autoComplete="off">
+							<TextField
+								id="outlined-basic"
+								label="Movie Title"
+								variant="outlined"
+								type="text"
+								value={name}
+								onChange={(e) => setName(e.target.value)}
+							/>
 
-					<TextField
-						id="outlined-basic"
-						label="Movie Rating"
-						variant="outlined"
-						type="text"
-						value={rating}
-						onChange={(e) => setRating(e.target.value)}
-					/>
+							<TextField
+								id="outlined-basic"
+								label="Poster link"
+								variant="outlined"
+								type="link"
+								value={poster}
+								onChange={(e) => setPoster(e.target.value)}
+							/>
 
-					<Button variant="outlined" type="button" onClick={addMovie} startIcon={<AddIcon />}>
-						Add Movie
-					</Button>
-				</form>
-			</div>
-			<section className="fav-movies">
-				{movies.map(({ name, poster, summary, rating }) => (
-					<ShowMovie name={name} poster={poster} summary={summary} rating={rating} />
-				))}
-			</section>
+							<TextField
+								id="outlined-basic"
+								label="Movie Summary"
+								variant="outlined"
+								type="text"
+								value={summary}
+								onChange={(e) => setSummary(e.target.value)}
+							/>
+
+							<TextField
+								id="outlined-basic"
+								label="Movie Rating"
+								variant="outlined"
+								type="text"
+								value={rating}
+								onChange={(e) => setRating(e.target.value)}
+							/>
+
+							<Button variant="outlined" type="button" onClick={addMovie} startIcon={<AddIcon />}>
+								Add Movie
+							</Button>
+						</form>
+					</div>
+					<section className="fav-movies">
+						{movies.map(({ name, poster, summary, rating }) => (
+							<ShowMovie name={name} poster={poster} summary={summary} rating={rating} />
+						))}
+					</section>
+				</Route>
+			</Switch>
 		</div>
 	);
 }

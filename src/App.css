@@ -2,22 +2,30 @@ body {
 	font-family: 'popins', sans-serif;
 }
 img {
-	height: 350px;
-	width: 235px;
+	width: 350px;
+	object-fit: cover;
 }
 .fav-movies {
 	margin: 20px;
 	display: flex;
-	gap: 10px;
+	gap: 25px;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 }
 .movie {
 	width: 350px;
 }
+.otherContainer {
+	text-align: justify;
+}
 .heading {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
+	align-items: center;
+}
+.rating {
+	font-size: large;
+	font-weight: 500;
 }
 .myForm {
 	margin: 25px;
@@ -36,6 +44,13 @@ img {
 }
 #description {
 	margin: 20px;
+}
+.like-dislike {
+	margin: 10px 10px 20px 10px;
+}
+.counter-container {
+	display: flex;
+	justify-content: space-around;
 }
 /*  .myForm label {
 	margin: 20px;
