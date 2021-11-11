@@ -4,11 +4,11 @@ import IconButton from '@mui/material/IconButton';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 
-export function ShowMovie({ name, poster, summary, rating }) {
+export function ShowMovie({ name, poster, summary, rating, index }) {
 	const [show, setShow] = useState(true);
 	const styles = { display: show ? 'block' : 'none' };
 	return (
-		<div className="movie">
+		<div className="movie" key={index}>
 			<div className="imageContainer">
 				<img className="poster" src={poster} alt={name} />
 			</div>

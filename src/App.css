@@ -2,7 +2,7 @@ body {
 	font-family: 'popins', sans-serif;
 }
 img {
-	width: 350px;
+	width: 200px;
 	object-fit: cover;
 }
 .fav-movies {
@@ -13,10 +13,10 @@ img {
 	justify-content: space-evenly;
 }
 .movie {
-	width: 350px;
+	width: 200px;
 }
 .otherContainer {
-	text-align: justify;
+	text-align: left;
 }
 .heading {
 	display: flex;
