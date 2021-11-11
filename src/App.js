@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import './App.css';
 import { ShowMovie } from './ShowMovie';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { InnitialMovie } from './InnitialMovie';
 import { Addmovie } from './AddMovie';
+import { Nav } from './Routerlink';
 
 function App() {
 	const MyFavMovie = InnitialMovie();
@@ -13,29 +14,8 @@ function App() {
 	// };
 	return (
 		<div className="App">
-			{/* <RouterLink /> */}
-			<ul>
-				<li>
-					<Link to="/">Home</Link>
-				</li>
-				<li>
-					<Link to="/about">About</Link>
-				</li>
-				<li>
-					<Link to="/movies">Movielist</Link>
-				</li>
-				<li>
-					<Link to="/movies/add">Add Movie</Link>
-				</li>
-				<li>
-					<Link to="/movies/edit">Edit Movie</Link>
-				</li>
-				<li>
-					<Link to="/movies/delete">Delete Movie</Link>
-				</li>
-			</ul>
-
-			<hr />
+			{/* Navbar component */}
+			<Nav />
 
 			<Switch>
 				<Route exact path="/">

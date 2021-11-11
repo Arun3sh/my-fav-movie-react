@@ -1,9 +1,9 @@
-import { Switch, Route, Link } from 'react-router-dom';
-import App from './App';
-export function RouterLink() {
+import { Link } from 'react-router-dom';
+
+export function Nav() {
 	return (
 		<div>
-			<ul>
+			<ul className="navlinks">
 				<li>
 					<Link to="/">Home</Link>
 				</li>
@@ -11,23 +11,20 @@ export function RouterLink() {
 					<Link to="/about">About</Link>
 				</li>
 				<li>
-					<Link to="/dashboard">Movielist</Link>
+					<Link to="/movies">Movielist</Link>
+				</li>
+				<li>
+					<Link to="/movies/add">Add Movie</Link>
+				</li>
+				<li>
+					<Link to="/movies/edit">Edit Movie</Link>
+				</li>
+				<li>
+					<Link to="/movies/delete">Delete Movie</Link>
 				</li>
 			</ul>
 
 			<hr />
-
-			<Switch>
-				<Route exact path="/">
-					<App />
-				</Route>
-				<Route path="/about">
-					<App />
-				</Route>
-				<Route path="/movielist">
-					<App />
-				</Route>
-			</Switch>
 		</div>
 	);
 }
