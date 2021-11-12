@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import { ShowMovie } from './ShowMovie';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { InnitialMovie } from './InnitialMovie';
 import { Addmovie } from './AddMovie';
 import { Nav } from './Routerlink';
@@ -22,6 +22,9 @@ function App() {
 					Home
 				</Route>
 				<Route path="/about">This is where you can find my fav movies!</Route>
+				<Route path="/films">
+					<Redirect to="/movies" />
+				</Route>
 				<Route exact path="/movies">
 					<section className="fav-movies">
 						{movies.map(({ name, poster, summary, rating }, index) => (
@@ -30,16 +33,27 @@ function App() {
 								poster={poster}
 								summary={summary}
 								rating={rating}
+								index={index}
 								key={index}
 							/>
 						))}
 					</section>
 				</Route>
+
 				<Route path="/movies/add">
 					<Addmovie />
 				</Route>
+
 				<Route path="/movies/edit">"Edit movies here"</Route>
 				<Route path="/movies/delete">"Delete movies here"</Route>
+
+				<Route exact path="/movies/\[^abc...]">
+					Other Info on movie
+				</Route>
+
+				<Route exact path="**">
+					Not found
+				</Route>
 			</Switch>
 		</div>
 	);
