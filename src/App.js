@@ -47,7 +47,7 @@ function App() {
 				<Route path="/movies/edit">"Edit movies here"</Route>
 				<Route path="/movies/delete">"Delete movies here"</Route>
 
-				<Route exact path="/movies/\[^abc...]">
+				<Route exact path="/movies/:id">
 					Other Info on movie
 				</Route>
 
