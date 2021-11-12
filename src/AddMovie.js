@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './App.css';
 import { TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { InnitialMovie } from './InnitialMovie';
 import { useHistory } from 'react-router';
 // import { ShowMovie } from './ShowMovie';
@@ -24,7 +25,15 @@ export function Addmovie() {
 		setMovies(addedmovies);
 		console.log(addedmovies);
 		console.log(movies);
+
 		history.push('/movies');
+	};
+
+	const clearEntry = () => {
+		setName('');
+		setPoster('');
+		setSummary('');
+		setRating('');
 	};
 	return (
 		<div>
@@ -50,10 +59,12 @@ export function Addmovie() {
 					/>
 
 					<TextField
-						id="outlined-basic"
+						id="outlined-multiline-static"
 						label="Movie Summary"
 						variant="outlined"
 						type="text"
+						multiline
+						rows={4}
 						value={summary}
 						onChange={(e) => setSummary(e.target.value)}
 					/>
@@ -67,9 +78,27 @@ export function Addmovie() {
 						onChange={(e) => setRating(e.target.value)}
 					/>
 
-					<Button variant="outlined" type="button" onClick={addMovie} startIcon={<AddIcon />}>
-						Add Movie
-					</Button>
+					<div className="add-cancel">
+						<Button
+							variant="outlined"
+							type="button"
+							className="addBtn"
+							onClick={addMovie}
+							startIcon={<AddIcon />}
+						>
+							Add Movie
+						</Button>
+						<Button
+							variant="outlined"
+							type="button"
+							className="cancelbtn"
+							color="error"
+							onClick={clearEntry}
+							startIcon={<DeleteIcon />}
+						>
+							Cancel
+						</Button>
+					</div>
 				</form>
 			</div>
 		</div>
