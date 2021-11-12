@@ -5,6 +5,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { InnitialMovie } from './InnitialMovie';
 import { Addmovie } from './AddMovie';
 import { Nav } from './Routerlink';
+import { Error } from './ErrorPage';
+import { MovieDetail } from './MovieDetail';
 
 function App() {
 	const MyFavMovie = InnitialMovie();
@@ -21,10 +23,13 @@ function App() {
 				<Route exact path="/">
 					Home
 				</Route>
+
 				<Route path="/about">This is where you can find my fav movies!</Route>
+
 				<Route path="/films">
 					<Redirect to="/movies" />
 				</Route>
+
 				<Route exact path="/movies">
 					<section className="fav-movies">
 						{movies.map(({ name, poster, summary, rating }, index) => (
@@ -48,11 +53,11 @@ function App() {
 				<Route path="/movies/delete">"Delete movies here"</Route>
 
 				<Route exact path="/movies/:id">
-					Other Info on movie
+					<MovieDetail movies={movies} />
 				</Route>
 
-				<Route exact path="**">
-					Not found
+				<Route path="**">
+					<Error />
 				</Route>
 			</Switch>
 		</div>
