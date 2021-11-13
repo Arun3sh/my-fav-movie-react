@@ -1,12 +1,27 @@
+:root {
+	--primary: #f3c318;
+}
 body {
 	font-family: 'popins', sans-serif;
+	/* background-color: rgb(99, 88, 88); */
 }
+/* input[type='text'],
+input[type='link'],
+textarea[type='text'] {
+	background-color: white;
+} */
+/* .navbar {
+	background-color: var(--primary);
+} */
 .navlinks {
 	height: 10vh;
 	list-style: none;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+}
+h1 {
+	text-align: center;
 }
 .card {
 	border-radius: 10px !important;
@@ -67,4 +82,11 @@ body {
 }
 .trailer {
 	margin: 25px;
+}
+.heading-summary {
+	max-width: 50rem;
+	padding: 20px;
+}
+.nav-button {
+	margin: 20px;
 }
