@@ -6,21 +6,20 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Button, CardActions } from '@mui/material';
+import { CardActions } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
 import { useHistory } from 'react-router';
 
-export function ShowMovie({ name, poster, summary, rating, index }) {
+export function ShowMovie({ name, poster, summary, rating, index, updateButton, deleteButton }) {
 	const [show, setShow] = useState(true);
 	const styles = { display: show ? 'block' : 'none' };
 	const history = useHistory();
 	return (
 		<div className="movie">
-			{/* new way */}
 			<Card sx={{ maxWidth: 300 }} className="card">
 				{/* contents */}
 				<img src={poster} alt={name} className="image" />
-				{/* <CardMedia component="img" height="140" image={poster} alt={name} className="image" /> */}
+
 				<CardContent>
 					<Typography gutterBottom variant="h5" component="div" className="heading">
 						<h4>
@@ -46,12 +45,15 @@ export function ShowMovie({ name, poster, summary, rating, index }) {
 
 				{/* For action buttons */}
 				<CardActions className="buttons">
-					<Button size="small" color="primary">
+					{/* <Button
+						size="small"
+						color="primary"
+						onClick={() => history.push(`/movies/edit/${index}`)}
+					>
 						Edit
-					</Button>
-					<Button size="small" color="error">
-						Delete
-					</Button>
+					</Button> */}
+					{updateButton}
+					{deleteButton}
 				</CardActions>
 			</Card>
 		</div>
