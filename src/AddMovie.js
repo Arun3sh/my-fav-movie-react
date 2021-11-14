@@ -18,7 +18,6 @@ export function Addmovie({ movies, setMovies }) {
 		const newMovie = { name, poster, summary, rating };
 
 		setMovies([...movies, newMovie]);
-		clearEntry();
 		history.push('/movies');
 	};
 

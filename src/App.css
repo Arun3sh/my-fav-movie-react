@@ -28,7 +28,7 @@ h1 {
 }
 .image {
 	object-fit: cover;
-	height: 350px;
+	height: 450px;
 	width: 300px !important;
 	object-position: top center;
 }

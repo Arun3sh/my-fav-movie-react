@@ -20,7 +20,6 @@ export function Editmovie({ movies, setMovies }) {
 		const copyMovies = [...movies];
 		copyMovies[id] = editedMovie;
 		setMovies(copyMovies);
-		clearEntry();
 		history.push('/movies');
 	};
 
