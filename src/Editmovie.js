@@ -15,7 +15,7 @@ export function Editmovie({ movies, setMovies }) {
 	const [trailer, setTrailer] = useState(movies[id].trailer);
 	const history = useHistory();
 
-	const updateMovie = () => {
+	const editMovie = () => {
 		const editedMovie = { name, poster, summary, rating };
 		const copyMovies = [...movies];
 		copyMovies[id] = editedMovie;
@@ -87,7 +87,7 @@ export function Editmovie({ movies, setMovies }) {
 							variant="outlined"
 							type="button"
 							className="addBtn"
-							onClick={updateMovie}
+							onClick={editMovie}
 							startIcon={<EditIcon />}
 						>
 							Update Movie
