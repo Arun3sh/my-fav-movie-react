@@ -26,7 +26,7 @@ export function Movielsit({ movies, setMovies }) {
 							aria-label="edit"
 							onClick={() => history.push(`/movies/edit/${index}`)}
 						>
-							Update
+							Edit
 						</Button>
 					}
 					deleteButton={
