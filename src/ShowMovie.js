@@ -9,21 +9,31 @@ import Typography from '@mui/material/Typography';
 import { CardActions } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
 import { useHistory } from 'react-router';
+import { useContext } from 'react';
+import { themeContext } from './App';
 
 export function ShowMovie({ name, poster, summary, rating, index, updateButton, deleteButton }) {
+	const [theme, setTheme] = useContext(themeContext);
 	const [show, setShow] = useState(true);
-	const styles = { display: show ? 'block' : 'none' };
+	const styles = { display: show ? 'block' : 'none', color: theme === 'dark' ? 'white' : 'black' };
 	const history = useHistory();
+
+	const style = {
+		backgroundColor: theme === 'dark' ? 'black' : 'white',
+	};
+
+	const color = { color: theme === 'dark' ? 'white' : 'black' };
+
 	return (
 		<div className="movie">
-			<Card sx={{ maxWidth: 300 }} className="card">
+			<Card sx={{ maxWidth: 300 }} className="card" style={style}>
 				{/* contents */}
 				<img src={poster} alt={name} className="image" />
 
 				<CardContent>
 					<Typography gutterBottom variant="h5" component="div" className="heading">
-						<h4>
-							{name}
+						<h4 style={color}>
+							<span style={color}>{name}</span>
 							<IconButton aria-label="Expand" color="primary" onClick={() => setShow(!show)}>
 								{!show ? <ExpandMore /> : <ExpandLess />}
 							</IconButton>
@@ -35,7 +45,9 @@ export function ShowMovie({ name, poster, summary, rating, index, updateButton, 
 								<InfoIcon />
 							</IconButton>
 						</h4>
-						<h2 className="rating">⭐{rating}</h2>
+						<h2 className="rating" style={color}>
+							⭐{rating}
+						</h2>
 					</Typography>
 					<Typography variant="body2" color="text.secondary" style={styles}>
 						{summary}
