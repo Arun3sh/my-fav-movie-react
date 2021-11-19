@@ -1,12 +1,15 @@
-import { Button } from '@mui/material';
+import { Button, InputBase } from '@mui/material';
 import { useState } from 'react';
 import './App.css';
-import { TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useHistory } from 'react-router';
 
+import { useContext } from 'react';
+import { themeContext } from './App';
+
 export function Addmovie({ movies, setMovies }) {
+	const [theme, setTheme] = useContext(themeContext);
 	const [name, setName] = useState('');
 	const [poster, setPoster] = useState('');
 	const [summary, setSummary] = useState('');
@@ -14,11 +17,21 @@ export function Addmovie({ movies, setMovies }) {
 	const [trailer, setTrailer] = useState('');
 	const history = useHistory();
 
-	const addMovie = () => {
-		const newMovie = { name, poster, summary, rating };
+	const inputstyle = {
+		border: theme === 'dark' ? '1px solid green' : '1px solid yellow',
+		color: theme === 'dark' ? 'white' : 'black',
+		borderRadius: '20px',
+	};
 
-		setMovies([...movies, newMovie]);
-		history.push('/movies');
+	const addMovie = () => {
+		const newMovie = { name, poster, summary, rating, trailer };
+		const check = name === '' || poster === '' || summary === '' ? true : false;
+		if (check) {
+			alert("Please don't leave any field empty");
+		} else {
+			setMovies([...movies, newMovie]);
+			history.push('/movies');
+		}
 	};
 
 	const clearEntry = () => {
@@ -33,51 +46,56 @@ export function Addmovie({ movies, setMovies }) {
 			<h1>Add Movie</h1>
 			<div className="addMovie">
 				<form className="myForm" noValidate autoComplete="off">
-					<TextField
+					<InputBase
 						id="outlined-basic"
-						label="Movie Title"
+						placeholder="Movie Title"
 						variant="outlined"
 						type="text"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
+						style={inputstyle}
 					/>
 
-					<TextField
+					<InputBase
 						id="outlined-basic"
-						label="Poster link"
+						placeholder="Poster link"
 						variant="outlined"
 						type="link"
 						value={poster}
 						onChange={(e) => setPoster(e.target.value)}
+						style={inputstyle}
 					/>
 
-					<TextField
-						id="outlined-multiline-static"
-						label="Movie Summary"
+					<InputBase
+						id="outlined-basic-multi"
+						placeholder="Movie Summary"
 						variant="outlined"
 						type="text"
 						multiline
 						rows={4}
 						value={summary}
 						onChange={(e) => setSummary(e.target.value)}
+						style={inputstyle}
 					/>
 
-					<TextField
+					<InputBase
 						id="outlined-basic"
-						label="Movie Rating"
+						placeholder="Movie Rating"
 						variant="outlined"
 						type="text"
 						value={rating}
 						onChange={(e) => setRating(e.target.value)}
+						style={inputstyle}
 					/>
 
-					<TextField
+					<InputBase
 						id="outlined-basic"
-						label="Movie Trailer"
+						placeholder="Movie Trailer"
 						variant="outlined"
 						type="text"
 						value={trailer}
 						onChange={(e) => setTrailer(e.target.value)}
+						style={inputstyle}
 					/>
 
 					<div className="add-cancel">
