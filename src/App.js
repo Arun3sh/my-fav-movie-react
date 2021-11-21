@@ -11,7 +11,6 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 
 function App() {
-	// const MyFavMovie = InnitialMovie();
 	const [movies, setMovies] = useState([]);
 	const [mode, setMode] = useState('dark');
 
@@ -29,7 +28,7 @@ function App() {
 
 	const stylePaper = { borderRadius: '0', minHeight: '100vh' };
 	return (
-		<ThemeProvider theme={theme} value={[mode]}>
+		<ThemeProvider theme={theme}>
 			<Paper elevation={5} style={stylePaper}>
 				<div className="App">
 					{/* Navbar component */}
@@ -47,15 +46,15 @@ function App() {
 						</Route>
 
 						<Route exact path="/movies">
-							<Movielsit movies={movies} setMovies={setMovies} />
+							<Movielsit />
 						</Route>
 
 						<Route path="/movies/add">
-							<Addmovie movies={movies} setMovies={setMovies} />
+							<Addmovie />
 						</Route>
 
 						<Route path="/movies/edit/:id">
-							<Editmovie movies={movies} setMovies={setMovies} />
+							<Editmovie />
 						</Route>
 
 						<Route exact path="/movies/:id">

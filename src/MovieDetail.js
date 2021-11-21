@@ -4,15 +4,10 @@ import { useState, useEffect } from 'react';
 import { Button } from '@mui/material';
 import KeyboardBackspaceRoundedIcon from '@mui/icons-material/KeyboardBackspaceRounded';
 import { Error } from './ErrorPage';
-// import { useContext, useEffect } from 'react';
-// import { themeContext } from './App';
 
 export function MovieDetail() {
-	// const [theme, setTheme] = useContext(themeContext);
 	const { id } = useParams();
 	const history = useHistory();
-	// console.log(id.match(/^[0-9]+$/) != null);
-	// const color = { color: theme === 'dark' ? 'white' : 'black' };
 
 	const [movie, setMovie] = useState({});
 	useEffect(() => {
@@ -20,7 +15,7 @@ export function MovieDetail() {
 			.then((data) => data.json())
 			.then((mv) => setMovie(mv));
 	});
-	// const movie = movies[id];
+
 	if (id.match(/^[0-9]+$/) != null) {
 		return (
 			<div className="movie-detail">
