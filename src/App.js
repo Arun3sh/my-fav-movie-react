@@ -1,24 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { Addmovie } from './AddMovie';
-import { Editmovie } from './Editmovie';
-import { Nav } from './Navbar';
-import { Error } from './ErrorPage';
-import { MovieDetail } from './MovieDetail';
-import { Movielsit } from './Movielist';
+import { Addmovie } from './movie/AddMovie';
+import { Editmovie } from './movie/Editmovie';
+import { Nav } from './movie/Navbar';
+import { Error } from './movie/ErrorPage';
+import { MovieDetail } from './movie/MovieDetail';
+import { Movielsit } from './movie/Movielist';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 
 function App() {
-	const [movies, setMovies] = useState([]);
 	const [mode, setMode] = useState('dark');
-
-	useEffect(() => {
-		fetch(`https://61988da7164fa60017c230e5.mockapi.io/myfavmovie/`, { method: 'GET' })
-			.then((data) => data.json())
-			.then((mvs) => setMovies(mvs));
-	}, []);
 
 	const theme = createTheme({
 		palette: {

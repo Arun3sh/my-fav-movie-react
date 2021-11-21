@@ -1,6 +1,7 @@
 import { Button, InputBase } from '@mui/material';
 import { useState } from 'react';
-import './App.css';
+import '../../src/App';
+import '../../src/App.css';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useHistory } from 'react-router';

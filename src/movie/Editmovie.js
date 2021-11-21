@@ -1,6 +1,8 @@
 import { Button, InputBase } from '@mui/material';
 import { useState, useEffect } from 'react';
-import './App.css';
+import '../../src/App.css';
+import '../../src/App';
+
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useHistory, useParams } from 'react-router';
@@ -19,6 +21,7 @@ export function Editmovie() {
 	return movie ? <Editform movie={movie} /> : '';
 }
 
+// this is a higher order function
 function Editform({ movie }) {
 	const [name, setName] = useState(movie.name);
 	const [poster, setPoster] = useState(movie.poster);
