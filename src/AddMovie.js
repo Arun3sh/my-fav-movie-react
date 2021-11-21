@@ -5,7 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useHistory } from 'react-router';
 
-export function Addmovie({ movies, setMovies }) {
+export function Addmovie() {
 	const [name, setName] = useState('');
 	const [poster, setPoster] = useState('');
 	const [summary, setSummary] = useState('');
@@ -17,7 +17,6 @@ export function Addmovie({ movies, setMovies }) {
 		border: '1px solid yellow',
 		borderRadius: '20px',
 	};
-	// const headingstyle = { color: theme === 'dark' ? 'white' : 'black' };
 
 	const addMovie = () => {
 		const newMovie = { name, poster, summary, rating, trailer };
@@ -25,8 +24,11 @@ export function Addmovie({ movies, setMovies }) {
 		if (check) {
 			alert("Please don't leave any field empty");
 		} else {
-			setMovies([...movies, newMovie]);
-			history.push('/movies');
+			fetch('https://61988da7164fa60017c230e5.mockapi.io/myfavmovie/', {
+				method: 'POST',
+				body: JSON.stringify(newMovie),
+				headers: { 'Content-type': 'application/json' },
+			}).then(() => history.push('/movies'));
 		}
 	};
 

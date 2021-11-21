@@ -1,13 +1,23 @@
 import { ShowMovie } from './ShowMovie';
 import { Button } from '@mui/material';
 import { useHistory } from 'react-router';
+import { useEffect, useState } from 'react';
 
-export function Movielsit({ movies, setMovies }) {
+export function Movielsit() {
 	const history = useHistory();
-	const removeMovie = (index) => {
-		const removeMovieIndex = index;
-		const remainingMovies = movies.filter((mv, idx) => idx !== removeMovieIndex);
-		setMovies(remainingMovies);
+	const [movies, setMovies] = useState([]);
+	const getMovies = () => {
+		fetch('https://61988da7164fa60017c230e5.mockapi.io/myfavmovie/', {
+			method: 'GET',
+		})
+			.then((data) => data.json())
+			.then((mvs) => setMovies(mvs));
+	};
+	useEffect(getMovies, []);
+	const removeMovie = (id) => {
+		fetch(`https://61988da7164fa60017c230e5.mockapi.io/myfavmovie/${id}`, {
+			method: 'DELETE',
+		}).then(() => getMovies());
 	};
 	return (
 		<section className="fav-movies">
@@ -31,12 +41,7 @@ export function Movielsit({ movies, setMovies }) {
 						</Button>
 					}
 					deleteButton={
-						<Button
-							size="small"
-							color="error"
-							aria-label="delete"
-							onClick={() => removeMovie(index)}
-						>
+						<Button size="small" color="error" aria-label="delete" onClick={() => removeMovie(id)}>
 							Delete
 						</Button>
 					}

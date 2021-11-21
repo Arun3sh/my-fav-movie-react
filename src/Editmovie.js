@@ -1,19 +1,31 @@
 import { Button, InputBase } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useHistory, useParams } from 'react-router';
 
-export function Editmovie({ movies, setMovies }) {
+export function Editmovie() {
 	const { id } = useParams();
+	const [movie, setMovie] = useState(null);
+	useEffect(() => {
+		fetch(`https://61988da7164fa60017c230e5.mockapi.io/myfavmovie/${id}`, {
+			method: 'GET',
+		})
+			.then((data) => data.json())
+			.then((mv) => setMovie(mv));
+	}, []);
 
-	const [name, setName] = useState(movies[id].name);
-	const [poster, setPoster] = useState(movies[id].poster);
-	const [summary, setSummary] = useState(movies[id].summary);
-	const [rating, setRating] = useState(movies[id].rating);
-	const [trailer, setTrailer] = useState(movies[id].trailer);
+	return movie ? <Editform movie={movie} /> : '';
+}
 
+function Editform({ movie }) {
+	const [name, setName] = useState(movie.name);
+	const [poster, setPoster] = useState(movie.poster);
+	const [summary, setSummary] = useState(movie.summary);
+	const [rating, setRating] = useState(movie.rating);
+	const [trailer, setTrailer] = useState(movie.trailer);
+	// console.log(name);
 	const history = useHistory();
 
 	const inputstyle = {
@@ -22,19 +34,23 @@ export function Editmovie({ movies, setMovies }) {
 	};
 
 	const editMovie = () => {
-		const editedMovie = { name, poster, summary, rating };
-		const copyMovies = [...movies];
-		copyMovies[id] = editedMovie;
-		setMovies(copyMovies);
-		history.push('/movies');
+		const editedMovie = { name, poster, summary, rating, trailer };
+		fetch(`https://61988da7164fa60017c230e5.mockapi.io/myfavmovie/${movie.id}`, {
+			method: 'PUT',
+			body: JSON.stringify(editedMovie),
+			headers: { 'Content-type': 'application/json' },
+		})
+			// copyMovies[id] = editedMovie;
+			// setMovie(copyMovies);
+			.then(() => history.push('/movies'));
 	};
 
 	const clearEntry = () => {
-		setName('');
-		setPoster('');
-		setSummary('');
-		setRating('');
-		setTrailer('');
+		setName(movie.name);
+		setPoster(movie.poster);
+		setSummary(movie.summary);
+		setRating(movie.rating);
+		setTrailer(movie.trailer);
 	};
 	return (
 		<div>
