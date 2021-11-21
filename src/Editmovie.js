@@ -5,21 +5,19 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useHistory, useParams } from 'react-router';
 
-import { useContext } from 'react';
-import { themeContext } from './App';
-
 export function Editmovie({ movies, setMovies }) {
 	const { id } = useParams();
-	const [theme, setTheme] = useContext(themeContext);
+
 	const [name, setName] = useState(movies[id].name);
 	const [poster, setPoster] = useState(movies[id].poster);
 	const [summary, setSummary] = useState(movies[id].summary);
 	const [rating, setRating] = useState(movies[id].rating);
 	const [trailer, setTrailer] = useState(movies[id].trailer);
+
 	const history = useHistory();
+
 	const inputstyle = {
-		border: theme === 'dark' ? '1px solid green' : '1px solid yellow',
-		color: theme === 'dark' ? 'white' : 'black',
+		border: '1px solid green',
 		borderRadius: '20px',
 	};
 

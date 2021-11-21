@@ -4,45 +4,42 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { useContext } from 'react';
-import { themeContext } from './App';
 
-export function Nav() {
-	const [theme, setTheme] = useContext(themeContext);
-	const style = {
-		backgroundColor: theme === 'dark' ? 'black' : 'white',
-	};
-	const linkstyle = { color: theme === 'dark' ? 'var(--primary) !important' : 'black!important' };
-
+export function Nav({ mode, setMode }) {
+	const styles = { marginRight: '20px' };
 	return (
 		<div className="navbar">
 			<Box sx={{ flexGrow: 1 }}>
-				<AppBar position="static" className="navbar-box" style={style}>
+				<AppBar position="static" className="navbar-box">
 					<Toolbar>
 						<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-							<ul className="navlinks" style={linkstyle}>
-								<li>
-									<Link style={linkstyle} to="/">
-										Home
+							<ul className="navlinks">
+								<li style={styles}>
+									<Link to="/">
+										<span style={{ color: 'blue' }}>Home</span>
 									</Link>
 								</li>
-								<li>
-									<Link style={linkstyle} to="/about">
-										About
+								<li style={styles}>
+									<Link to="/about">
+										<span style={{ color: 'blue' }}>About</span>
 									</Link>
 								</li>
-								<li>
-									<Link style={linkstyle} to="/movies">
-										Movielist
-									</Link>
+								<li style={styles}>
+									<Link to="/movies">Movielist</Link>
 								</li>
-								<li style={linkstyle}>
+								<li style={styles}>
 									<Link to="/movies/add">Add Movie</Link>
+								</li>
+								<li style={{ marginLeft: 'auto', color: 'white' }}>
+									<Button
+										onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
+										color="inherit"
+									>
+										{mode === 'light' ? 'Dark' : 'Light'} Mode
+									</Button>
 								</li>
 							</ul>
 						</Typography>
-						<Button onClick={() => setTheme('white')}>Light</Button>
-						<Button onClick={() => setTheme('dark')}>Dark</Button>
 					</Toolbar>
 				</AppBar>
 			</Box>

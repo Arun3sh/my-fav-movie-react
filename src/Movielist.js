@@ -11,20 +11,21 @@ export function Movielsit({ movies, setMovies }) {
 	};
 	return (
 		<section className="fav-movies">
-			{movies.map(({ name, poster, summary, rating }, index) => (
+			{movies.map(({ id, name, poster, summary, rating, trailer }, index) => (
 				<ShowMovie
 					name={name}
 					poster={poster}
 					summary={summary}
 					rating={rating}
-					index={index}
+					trailer={trailer}
+					id={id}
 					key={index}
 					updateButton={
 						<Button
 							size="small"
 							color="primary"
 							aria-label="edit"
-							onClick={() => history.push(`/movies/edit/${index}`)}
+							onClick={() => history.push(`/movies/edit/${id}`)}
 						>
 							Edit
 						</Button>

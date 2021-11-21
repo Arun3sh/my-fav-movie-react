@@ -5,11 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useHistory } from 'react-router';
 
-import { useContext } from 'react';
-import { themeContext } from './App';
-
 export function Addmovie({ movies, setMovies }) {
-	const [theme, setTheme] = useContext(themeContext);
 	const [name, setName] = useState('');
 	const [poster, setPoster] = useState('');
 	const [summary, setSummary] = useState('');
@@ -18,10 +14,10 @@ export function Addmovie({ movies, setMovies }) {
 	const history = useHistory();
 
 	const inputstyle = {
-		border: theme === 'dark' ? '1px solid green' : '1px solid yellow',
-		color: theme === 'dark' ? 'white' : 'black',
+		border: '1px solid yellow',
 		borderRadius: '20px',
 	};
+	// const headingstyle = { color: theme === 'dark' ? 'white' : 'black' };
 
 	const addMovie = () => {
 		const newMovie = { name, poster, summary, rating, trailer };
