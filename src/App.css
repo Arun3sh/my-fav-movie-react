@@ -85,6 +85,7 @@ h1 {
 
 .add-cancel,
 .buttons {
+	margin: 25px;
 	display: flex;
 	justify-content: space-around;
 }
