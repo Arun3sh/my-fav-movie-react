@@ -46,12 +46,10 @@ export function Addmovie() {
 	const { errors, handleSubmit, handleBlur, handleChange, touched, values, resetForm } = useFormik({
 		initialValues: { name: '', poster: '', rating: '', summary: '', trailer: '' },
 		validationSchema: formValidationSchema,
-		onSubmit: (values) => {
-			console.log('onSubmit', values);
-		},
+
 		onSubmit: (values) => {
 			addMovie(values);
-			// console.log(JSON.stringify(values));
+
 			resetForm();
 		},
 	});
@@ -123,13 +121,7 @@ export function Addmovie() {
 					/>
 					{errors.trailer && touched.trailer ? errors.trailer : ''}
 					<div className="add-cancel">
-						<Button
-							variant="outlined"
-							type="submit"
-							className="addBtn"
-							// onClick={addMovie}
-							startIcon={<AddIcon />}
-						>
+						<Button variant="outlined" type="submit" className="addBtn" startIcon={<AddIcon />}>
 							Add Movie
 						</Button>
 
