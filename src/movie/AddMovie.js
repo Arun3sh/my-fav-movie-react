@@ -1,118 +1,144 @@
-import { Button, InputBase } from '@mui/material';
-import { useState } from 'react';
+import { Button, TextField } from '@mui/material';
 import '../../src/App';
 import '../../src/App.css';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useHistory } from 'react-router';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 export function Addmovie() {
-	const [name, setName] = useState('');
-	const [poster, setPoster] = useState('');
-	const [summary, setSummary] = useState('');
-	const [rating, setRating] = useState('');
-	const [trailer, setTrailer] = useState('');
 	const history = useHistory();
 
 	const inputstyle = {
-		border: '1px solid yellow',
-		borderRadius: '20px',
+		marginTop: '15px',
 	};
 
-	const addMovie = () => {
-		const newMovie = { name, poster, summary, rating, trailer };
-		const check = name === '' || poster === '' || summary === '' ? true : false;
-		if (check) {
-			alert("Please don't leave any field empty");
-		} else {
-			fetch('https://61988da7164fa60017c230e5.mockapi.io/myfavmovie/', {
-				method: 'POST',
-				body: JSON.stringify(newMovie),
-				headers: { 'Content-type': 'application/json' },
-			}).then(() => history.push('/movies'));
-		}
+	const addMovie = (newMovie) => {
+		fetch('https://61988da7164fa60017c230e5.mockapi.io/myfavmovie/', {
+			method: 'POST',
+			body: JSON.stringify(newMovie),
+			headers: { 'Content-type': 'application/json' },
+		}).then(() => history.push('/movies'));
 	};
 
-	const clearEntry = () => {
-		setName('');
-		setPoster('');
-		setSummary('');
-		setRating('');
-		setTrailer('');
-	};
+	const formValidationSchema = yup.object({
+		name: yup.string().required('Movie name is required'),
+		poster: yup
+			.string()
+			.min(5, 'Must be greater than 5 characters')
+			.required('Movie Poster is required'),
+		summary: yup
+			.string()
+			.min(5, 'Must be more than 5 characters')
+			.required('Summary of the movie is required'),
+		trailer: yup
+			.string()
+			.min(5, 'Must be more than 5 characters')
+			.required('Embeded Trailer link is required'),
+		rating: yup
+			.number()
+			.positive('Value must be positive')
+			.transform((value) => (isNaN(value) ? undefined : value))
+			.max(10, 'Value must be between 0 - 10')
+			.required('Rating must be between 0 - 10'),
+	});
+	const { errors, handleSubmit, handleBlur, handleChange, touched, values, resetForm } = useFormik({
+		initialValues: { name: '', poster: '', rating: '', summary: '', trailer: '' },
+		validationSchema: formValidationSchema,
+		onSubmit: (values) => {
+			console.log('onSubmit', values);
+		},
+		onSubmit: (values) => {
+			addMovie(values);
+			// console.log(JSON.stringify(values));
+			resetForm();
+		},
+	});
 	return (
 		<div>
 			<h1>Add Movie</h1>
 			<div className="addMovie">
-				<form className="myForm" noValidate autoComplete="off">
-					<InputBase
+				<form className="myForm" onSubmit={handleSubmit} autoComplete="off">
+					<TextField
 						id="outlined-basic"
-						placeholder="Movie Title"
+						name="name"
+						label="Movie Title"
 						variant="outlined"
 						type="text"
-						value={name}
-						onChange={(e) => setName(e.target.value)}
+						value={values.name}
+						onChange={handleChange}
+						onBlur={handleBlur}
 						style={inputstyle}
 					/>
-
-					<InputBase
+					{errors.name && touched.name ? errors.name : ''}
+					<TextField
 						id="outlined-basic"
-						placeholder="Poster link"
+						name="poster"
+						label="Poster link"
 						variant="outlined"
 						type="link"
-						value={poster}
-						onChange={(e) => setPoster(e.target.value)}
+						value={values.poster}
+						onChange={handleChange}
+						onBlur={handleBlur}
 						style={inputstyle}
 					/>
-
-					<InputBase
+					{errors.poster && touched.poster ? errors.poster : ''}
+					<TextField
 						id="outlined-basic-multi"
-						placeholder="Movie Summary"
+						name="summary"
+						label="Movie Summary"
 						variant="outlined"
 						type="text"
 						multiline
 						rows={4}
-						value={summary}
-						onChange={(e) => setSummary(e.target.value)}
+						value={values.summary}
+						onChange={handleChange}
+						onBlur={handleBlur}
 						style={inputstyle}
 					/>
-
-					<InputBase
+					{errors.summary && touched.summary ? errors.summary : ''}
+					<TextField
 						id="outlined-basic"
-						placeholder="Movie Rating"
+						name="rating"
+						label="Movie Rating"
 						variant="outlined"
 						type="text"
-						value={rating}
-						onChange={(e) => setRating(e.target.value)}
+						value={values.rating}
+						onChange={handleChange}
+						onBlur={handleBlur}
 						style={inputstyle}
 					/>
-
-					<InputBase
+					{errors.rating && touched.rating ? errors.rating : ''}
+					<TextField
 						id="outlined-basic"
-						placeholder="Movie Trailer"
+						name="trailer"
+						label="Movie Trailer"
 						variant="outlined"
 						type="text"
-						value={trailer}
-						onChange={(e) => setTrailer(e.target.value)}
+						value={values.trailer}
+						onChange={handleChange}
+						onBlur={handleBlur}
 						style={inputstyle}
 					/>
-
+					{errors.trailer && touched.trailer ? errors.trailer : ''}
 					<div className="add-cancel">
 						<Button
 							variant="outlined"
-							type="button"
+							type="submit"
 							className="addBtn"
-							onClick={addMovie}
+							// onClick={addMovie}
 							startIcon={<AddIcon />}
 						>
 							Add Movie
 						</Button>
+
 						<Button
 							variant="outlined"
 							type="button"
 							className="resetBtn"
 							color="error"
-							onClick={clearEntry}
+							onClick={resetForm}
 							startIcon={<DeleteIcon />}
 						>
 							Reset
