@@ -11,20 +11,10 @@ ul,
 li,
 p {
 	font-family: 'popins', sans-serif;
-	/* color: var(--primary) !important; */
 }
-/* .movie > div {
-	background-color: black;
-} */
-/* input[type='text'],
-input[type='link'],
-textarea[type='text'] {
-	background-color: white;
-} */
-/* header {
-	background-color: var(--primary) !important;
-} */
+
 .navlinks {
+	padding: 0px;
 	height: 10vh;
 	list-style: none;
 	display: flex;
@@ -113,4 +103,28 @@ h1 {
 }
 .nav-button {
 	margin: 20px;
+}
+.li-navbar {
+	margin-right: 20px;
+}
+.li-navbar span,
+.li-navbar a {
+	color: white !important;
+	text-decoration: none;
+}
+.li-navbar-mode {
+	margin-left: auto;
+}
+
+@media screen and (max-width: 480px) {
+	.navlinks {
+		flex-direction: column;
+		height: 25vh;
+	}
+	.li-navbar {
+		margin-right: 0px;
+	}
+	.li-navbar-mode {
+		margin-left: 0;
+	}
 }
