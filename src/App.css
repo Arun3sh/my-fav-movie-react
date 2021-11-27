@@ -1,9 +1,7 @@
 :root {
 	--primary: #f3c318;
 }
-/* * {
-	color: white;
-} */
+
 body,
 div,
 a,
@@ -41,9 +39,7 @@ h1 {
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 }
-/* .movie {
-	width: 200px;
-} */
+
 .otherContainer {
 	text-align: left;
 }
@@ -60,11 +56,8 @@ h1 {
 	margin: 25px;
 	display: flex;
 	flex-direction: column;
-	/* align-items: center; */
 }
-.MuiInputBase-root {
-	margin-bottom: 20px !important;
-}
+
 #outlined-basic {
 	text-align: center;
 }
