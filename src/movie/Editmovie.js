@@ -96,8 +96,9 @@ function Editform({ movie }) {
 						onChange={handleChange}
 						onBlur={handleBlur}
 						style={inputstyle}
+						error={errors.name && touched.name}
+						helperText={errors.name && touched.name ? errors.name : ''}
 					/>
-					{errors.name && touched.name ? errors.name : ''}
 
 					<TextField
 						id="outlined-basic"
@@ -109,8 +110,9 @@ function Editform({ movie }) {
 						onChange={handleChange}
 						onBlur={handleBlur}
 						style={inputstyle}
+						error={errors.poster && touched.poster}
+						helperText={errors.poster && touched.poster ? errors.poster : ''}
 					/>
-					{errors.poster && touched.poster ? errors.poster : ''}
 
 					<TextField
 						id="outlined-basic-multi"
@@ -124,8 +126,9 @@ function Editform({ movie }) {
 						onChange={handleChange}
 						onBlur={handleBlur}
 						style={inputstyle}
+						error={errors.summary && touched.summary}
+						helperText={errors.summary && touched.summary ? errors.summary : ''}
 					/>
-					{errors.summary && touched.summary ? errors.summary : ''}
 
 					<TextField
 						id="outlined-basic"
@@ -137,8 +140,9 @@ function Editform({ movie }) {
 						onChange={handleChange}
 						onBlur={handleBlur}
 						style={inputstyle}
+						error={errors.rating && touched.rating}
+						helperText={errors.rating && touched.rating ? errors.rating : ''}
 					/>
-					{errors.rating && touched.rating ? errors.rating : ''}
 
 					<TextField
 						id="outlined-basic"
@@ -150,11 +154,18 @@ function Editform({ movie }) {
 						onChange={handleChange}
 						onBlur={handleBlur}
 						style={inputstyle}
+						error={errors.trailer && touched.trailer}
+						helperText={errors.trailer && touched.trailer ? errors.trailer : ''}
 					/>
-					{errors.trailer && touched.trailer ? errors.trailer : ''}
 
 					<div className="add-cancel">
-						<Button variant="outlined" type="submit" className="addBtn" startIcon={<EditIcon />}>
+						<Button
+							variant="outlined"
+							type="submit"
+							className="addBtn"
+							color="success"
+							startIcon={<EditIcon />}
+						>
 							Update Movie
 						</Button>
 						<Button
