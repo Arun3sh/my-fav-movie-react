@@ -1,9 +1,9 @@
 import { useHistory, useParams } from 'react-router';
 import { useState, useEffect } from 'react';
-
 import { Button } from '@mui/material';
 import KeyboardBackspaceRoundedIcon from '@mui/icons-material/KeyboardBackspaceRounded';
 import { Error } from './ErrorPage';
+import { API } from '../global';
 
 export function MovieDetail() {
 	const { id } = useParams();
@@ -11,7 +11,7 @@ export function MovieDetail() {
 
 	const [movie, setMovie] = useState({});
 	useEffect(() => {
-		fetch(`https://61988da7164fa60017c230e5.mockapi.io/myfavmovie/${id}`, { method: 'GET' })
+		fetch(`${API}/${id}`, { method: 'GET' })
 			.then((data) => data.json())
 			.then((mv) => setMovie(mv));
 	});

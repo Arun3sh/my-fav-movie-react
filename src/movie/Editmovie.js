@@ -7,12 +7,13 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useHistory, useParams } from 'react-router';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { API } from '../global';
 
 export function Editmovie() {
 	const { id } = useParams();
 	const [movie, setMovie] = useState(null);
 	useEffect(() => {
-		fetch(`https://61988da7164fa60017c230e5.mockapi.io/myfavmovie/${id}`, {
+		fetch(`${API}/${id}`, {
 			method: 'GET',
 		})
 			.then((data) => data.json())
@@ -31,7 +32,7 @@ function Editform({ movie }) {
 	};
 
 	const editMovie = (editedMovie) => {
-		fetch(`https://61988da7164fa60017c230e5.mockapi.io/myfavmovie/${movie.id}`, {
+		fetch(`${API}/${movie.id}`, {
 			method: 'PUT',
 			body: JSON.stringify(editedMovie),
 			headers: { 'Content-type': 'application/json' },

@@ -2,12 +2,13 @@ import { ShowMovie } from './ShowMovie';
 import { Button } from '@mui/material';
 import { useHistory } from 'react-router';
 import { useEffect, useState } from 'react';
+import { API } from '../global';
 
 export function Movielsit() {
 	const history = useHistory();
 	const [movies, setMovies] = useState([]);
 	const getMovies = () => {
-		fetch('https://61988da7164fa60017c230e5.mockapi.io/myfavmovie/', {
+		fetch(`${API}/`, {
 			method: 'GET',
 		})
 			.then((data) => data.json())
@@ -15,7 +16,7 @@ export function Movielsit() {
 	};
 	useEffect(getMovies, []);
 	const removeMovie = (id) => {
-		fetch(`https://61988da7164fa60017c230e5.mockapi.io/myfavmovie/${id}`, {
+		fetch(`${API}/${id}`, {
 			method: 'DELETE',
 		}).then(() => getMovies());
 	};

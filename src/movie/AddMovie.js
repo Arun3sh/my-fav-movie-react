@@ -6,6 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useHistory } from 'react-router';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { API } from '../global';
 
 export function Addmovie() {
 	const history = useHistory();
@@ -15,7 +16,7 @@ export function Addmovie() {
 	};
 
 	const addMovie = (newMovie) => {
-		fetch('https://61988da7164fa60017c230e5.mockapi.io/myfavmovie/', {
+		fetch(`${API}/`, {
 			method: 'POST',
 			body: JSON.stringify(newMovie),
 			headers: { 'Content-type': 'application/json' },
