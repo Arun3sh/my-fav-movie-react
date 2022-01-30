@@ -14,9 +14,9 @@ export function MovieDetail() {
 		fetch(`${API}/${id}`, { method: 'GET' })
 			.then((data) => data.json())
 			.then((mv) => setMovie(mv));
-	});
+	}, []);
 
-	if (id.match(/^[0-9]+$/) != null) {
+	if (movie.id !== undefined) {
 		return (
 			<div className="movie-detail">
 				<div className="trailer">

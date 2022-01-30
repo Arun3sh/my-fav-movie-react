@@ -22,14 +22,13 @@ export function Movielsit() {
 	};
 	return (
 		<section className="fav-movies">
-			{movies.map(({ _id, name, poster, summary, rating, trailer }, index) => (
+			{movies.map(({ _id, name, poster, summary, rating }, index) => (
 				<ShowMovie
 					name={name}
 					poster={poster}
 					summary={summary}
 					rating={rating}
-					trailer={trailer}
-					_id={_id}
+					id={_id}
 					key={index}
 					updateButton={
 						<Button
