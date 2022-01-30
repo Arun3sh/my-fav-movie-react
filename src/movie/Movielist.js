@@ -15,34 +15,34 @@ export function Movielsit() {
 			.then((mvs) => setMovies(mvs));
 	};
 	useEffect(getMovies, []);
-	const removeMovie = (id) => {
-		fetch(`${API}/${id}`, {
+	const removeMovie = (_id) => {
+		fetch(`${API}/${_id}`, {
 			method: 'DELETE',
 		}).then(() => getMovies());
 	};
 	return (
 		<section className="fav-movies">
-			{movies.map(({ id, name, poster, summary, rating, trailer }, index) => (
+			{movies.map(({ _id, name, poster, summary, rating, trailer }, index) => (
 				<ShowMovie
 					name={name}
 					poster={poster}
 					summary={summary}
 					rating={rating}
 					trailer={trailer}
-					id={id}
+					_id={_id}
 					key={index}
 					updateButton={
 						<Button
 							size="small"
 							color="primary"
 							aria-label="edit"
-							onClick={() => history.push(`/movies/edit/${id}`)}
+							onClick={() => history.push(`/movies/edit/${_id}`)}
 						>
 							Edit
 						</Button>
 					}
 					deleteButton={
-						<Button size="small" color="error" aria-label="delete" onClick={() => removeMovie(id)}>
+						<Button size="small" color="error" aria-label="delete" onClick={() => removeMovie(_id)}>
 							Delete
 						</Button>
 					}

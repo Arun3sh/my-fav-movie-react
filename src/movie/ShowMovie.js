@@ -10,7 +10,7 @@ import { CardActions } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
 import { useHistory } from 'react-router';
 
-export function ShowMovie({ name, poster, summary, rating, id, updateButton, deleteButton }) {
+export function ShowMovie({ name, poster, summary, rating, _id, updateButton, deleteButton }) {
 	const [show, setShow] = useState(true);
 
 	const history = useHistory();
@@ -31,7 +31,7 @@ export function ShowMovie({ name, poster, summary, rating, id, updateButton, del
 							<IconButton
 								aria-label="To Trailer"
 								color="primary"
-								onClick={() => history.push(`/movies/${id}`)}
+								onClick={() => history.push(`/movies/${_id}`)}
 							>
 								<InfoIcon />
 							</IconButton>
