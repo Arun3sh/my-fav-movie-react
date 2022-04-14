@@ -25,18 +25,12 @@ export function Addmovie() {
 
 	const formValidationSchema = yup.object({
 		name: yup.string().required('Movie name is required'),
-		poster: yup
-			.string()
-			.min(5, 'Must be greater than 5 characters')
-			.required('Movie Poster is required'),
+		poster: yup.string().required('Movie Poster is required'),
 		summary: yup
 			.string()
 			.min(5, 'Must be more than 5 characters')
 			.required('Summary of the movie is required'),
-		trailer: yup
-			.string()
-			.min(5, 'Must be more than 5 characters')
-			.required('Embeded Trailer link is required'),
+		trailer: yup.string().required('Embeded Trailer link is required'),
 		rating: yup
 			.number()
 			.positive('Value must be positive')
@@ -139,7 +133,7 @@ export function Addmovie() {
 							color="success"
 							startIcon={<AddIcon />}
 						>
-							Add Movie
+							Add
 						</Button>
 
 						<Button

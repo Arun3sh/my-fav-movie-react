@@ -41,18 +41,12 @@ function Editform({ movie }) {
 
 	const formValidationSchema = yup.object({
 		name: yup.string().required('Movie name is required'),
-		poster: yup
-			.string()
-			.min(5, 'Must be greater than 5 characters')
-			.required('Movie Poster is required'),
+		poster: yup.string().required('Movie Poster is required'),
 		summary: yup
 			.string()
 			.min(5, 'Must be more than 5 characters')
 			.required('Summary of the movie is required'),
-		trailer: yup
-			.string()
-			.min(5, 'Must be more than 5 characters')
-			.required('Embeded Trailer link is required'),
+		trailer: yup.string().required('Embeded Trailer link is required'),
 		rating: yup
 			.number()
 			.positive('Value must be positive')
@@ -167,7 +161,7 @@ function Editform({ movie }) {
 							color="success"
 							startIcon={<EditIcon />}
 						>
-							Update Movie
+							Update
 						</Button>
 						<Button
 							variant="outlined"

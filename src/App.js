@@ -19,7 +19,7 @@ function App() {
 		},
 	});
 
-	const stylePaper = { borderRadius: '0', minHeight: '100vh' };
+	const stylePaper = { borderRadius: '0', minHeight: '120vh' };
 	return (
 		<ThemeProvider theme={theme}>
 			<Paper elevation={5} style={stylePaper}>
@@ -29,7 +29,7 @@ function App() {
 
 					<Switch>
 						<Route exact path="/">
-							Home
+							<Redirect to="/movies" />
 						</Route>
 
 						<Route path="/about">This is where you can find my fav movies!</Route>

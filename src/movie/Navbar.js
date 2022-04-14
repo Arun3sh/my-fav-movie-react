@@ -16,12 +16,12 @@ export function Nav({ mode, setMode }) {
 						<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 							<ul className="navlinks">
 								<li className="li-navbar">
-									<Link to="/">
+									<Link to="/movies">
 										<span style={{ color: 'blue' }}>Home</span>
 									</Link>
 								</li>
 								<li className="li-navbar">
-									<Link to="/about">
+									<Link to="/movies">
 										<span style={{ color: 'blue' }}>About</span>
 									</Link>
 								</li>
